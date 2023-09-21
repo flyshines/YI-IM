@@ -17,21 +17,21 @@ public class DefaultDaoImpl implements Dao {
     /**
      * 在线客户端集合
      */
-    public Map<String, Object> onlineMap = new ConcurrentHashMap<String, Object>();
+    public Map<String, Online> onlineMap = new ConcurrentHashMap<>();
 
     @Override
-    public void setOnline(String clientId, Object o) {
+    public void setOnline(String clientId, Online o) {
         onlineMap.put(clientId, o);
     }
 
     @Override
-    public Object getOnline(String clientId) {
+    public Online getOnline(String clientId) {
         return onlineMap.get(clientId);
     }
 
     @Override
-    public void removeOnline(String clientId) {
-        onlineMap.remove(clientId);
+    public void removeOnline(String userId) {
+        onlineMap.remove(userId);
     }
 
 }

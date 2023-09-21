@@ -32,6 +32,11 @@ public class ImBeanRegister {
 		return new ImConfig();
 	}
 
+	@Bean
+	public DefaultRegisterListener getDefaultRegisterListener() {
+		return new DefaultRegisterListener();
+	}
+
 	/**
 	 * 注册SocketIOserver bean
 	 *

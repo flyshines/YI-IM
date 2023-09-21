@@ -1,5 +1,7 @@
 package com.itic.im.core.dao;
 
+import com.itic.im.core.model.Online;
+
 /**
  * 数据持久层DAO接口
  * date: 2022/1/13 11:54
@@ -13,19 +15,19 @@ public interface Dao {
      * @param object
      * @return void
      */
-    void setOnline(String clientId, Object object);
+    void setOnline(String clientId, Online object);
 
     /**
      * 获取在线客户端
      * @param clientId
      * @return void
      */
-    Object getOnline(String clientId);
+    Online getOnline(String clientId);
 
     /**
      * 移除在线客户端
-     * @param clientId
+     * @param userId
      * @return void
      */
-    void removeOnline(String clientId);
+    void removeOnline(String userId);
 }

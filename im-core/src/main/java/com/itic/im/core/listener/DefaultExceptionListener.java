@@ -29,17 +29,22 @@ public class DefaultExceptionListener implements ExceptionListener {
 
     @Override
     public void onConnectException(Exception e, SocketIOClient client) {
-        logger.error("websocket连接异常, {}", e.getMessage(), e);
+        logger.warn("websocket连接异常-conConnect, {}", e.getMessage(), e);
     }
 
     @Override
     public boolean exceptionCaught(ChannelHandlerContext ctx, Throwable e) {
-        logger.error("websocket连接异常, {}", e.getMessage(), e);
+        logger.warn("websocket连接异常-exception, {}", e.getMessage(), e);
         return false;
     }
 
     @Override
     public void onPingException(Exception e, SocketIOClient client) {
+        logger.error("websocket心跳异常, {}", e.getMessage(), e);
+    }
+
+    @Override
+    public void onPongException(Exception e, SocketIOClient client) {
         logger.error("websocket心跳异常, {}", e.getMessage(), e);
     }
 }

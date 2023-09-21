@@ -17,11 +17,5 @@
             <artifactId>im-core</artifactId>
             <version>${im-version}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.itic</groupId>-->
-<!--            <artifactId>im-starter-redis</artifactId>-->
-<!--            <version>${im-version}</version>-->
-<!--        </dependency>-->
-        <!-- Spring模块 -->
     </dependencies>
 </project>

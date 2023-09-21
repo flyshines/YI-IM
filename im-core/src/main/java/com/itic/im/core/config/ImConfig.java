@@ -18,7 +18,7 @@ public class ImConfig implements Serializable {
     private String host = "localhost";
 
     /** 端口 */
-    private int port = 9901;
+    private int port = 9097;
 
     /** maximum websocket frame content length limit */
     private int maxFramePayloadLength = 64 * 1024;

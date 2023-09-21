@@ -2,7 +2,7 @@ package com.itic.im.api.endpoint;
 
 import com.itic.im.core.ImManager;
 import com.itic.im.core.model.DefaultPushMessage;
-import com.itic.im.core.model.R;
+import com.itic.im.core.model.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,8 +22,8 @@ public class ImController {
 
     @ApiOperation("发送消息")
     @PostMapping("/sendMsg")
-    public R sendMsg(DefaultPushMessage pushMessage) {
+    public Result sendMsg(DefaultPushMessage pushMessage) {
         ImManager.getImTemplate().handler(pushMessage);
-        return R.ok();
+        return Result.ok();
     }
 }

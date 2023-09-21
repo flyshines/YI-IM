@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author yangwl
  */
 @ApiModel("响应实体")
-public class R<T> implements Serializable {
+public class Result<T> implements Serializable {
 
     /**
      * 成功
@@ -34,40 +34,40 @@ public class R<T> implements Serializable {
     @ApiModelProperty("时间戳")
     private long time;
 
-    public static <T> R<T> ok() {
+    public static <T> Result<T> ok() {
         return restResult(null, SUCCESS, null);
     }
 
-    public static <T> R<T> ok(T data) {
+    public static <T> Result<T> ok(T data) {
         return restResult(data, SUCCESS, null);
     }
 
-    public static <T> R<T> ok(T data, String msg) {
+    public static <T> Result<T> ok(T data, String msg) {
         return restResult(data, SUCCESS, msg);
     }
 
-    public static <T> R<T> fail() {
+    public static <T> Result<T> fail() {
         return restResult(null, FAIL, null);
     }
 
-    public static <T> R<T> fail(String msg) {
+    public static <T> Result<T> fail(String msg) {
         return restResult(null, FAIL, msg);
     }
 
-    public static <T> R<T> fail(T data) {
+    public static <T> Result<T> fail(T data) {
         return restResult(data, FAIL, null);
     }
 
-    public static <T> R<T> fail(T data, String msg) {
+    public static <T> Result<T> fail(T data, String msg) {
         return restResult(data, FAIL, msg);
     }
 
-    public static <T> R<T> fail(int code, String msg) {
+    public static <T> Result<T> fail(int code, String msg) {
         return restResult(null, code, msg);
     }
 
-    private static <T> R<T> restResult(T data, int code, String msg) {
-        R<T> apiResult = new R<>();
+    private static <T> Result<T> restResult(T data, int code, String msg) {
+        Result<T> apiResult = new Result<>();
         apiResult.setCode(code);
         apiResult.setData(data);
         apiResult.setMsg(msg);

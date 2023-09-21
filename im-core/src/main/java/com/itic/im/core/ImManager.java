@@ -13,13 +13,9 @@ import com.itic.im.core.exception.ImException;
 import com.itic.im.core.handler.DefaultEventHandler;
 import com.itic.im.core.handler.DefaultHandler;
 import com.itic.im.core.handler.Handler;
-import com.itic.im.core.listener.DefaultRegisterListener;
 import com.itic.im.core.model.Online;
 import com.itic.im.core.template.DefaultImTemplateImpl;
 import com.itic.im.core.template.ImTemplate;
-
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * IM管理器
@@ -87,8 +83,7 @@ public class ImManager {
      *  获取默认命名空间
      */
     public static SocketIONamespace defaultNamespace() {
-        SocketIONamespace namespace = ImManager.getSocketIOServer().getNamespace(ImManager.getConfig().getNamespace());
-        return namespace;
+        return ImManager.getSocketIOServer().getNamespace(ImManager.getConfig().getNamespace());
     }
 
     /**
@@ -200,7 +195,7 @@ public class ImManager {
      * 认证监听
      */
     public static void setAuthorizationListener(AuthorizationListener authorizationListener) {
-        getSocketIOServer().getConfigCopy().setAuthorizationListener(authorizationListener);
+        getSocketIOServer().getConfiguration().setAuthorizationListener(authorizationListener);
     }
 
     /**
@@ -209,10 +204,8 @@ public class ImManager {
     public static void start() {
 
         // 设置注册监听
-        if(null == ImManager.registerListener) {
-            ImManager.registerListener = new DefaultRegisterListener();
-        }
-        defaultNamespace().addEventListener(IMConstants.REGISTER_EVENT, Online.class, ImManager.registerListener); // 注册事件监听
+        // 注册事件监听
+        defaultNamespace().addEventListener(IMConstants.REGISTER_EVENT, Online.class, registerListener);
         // 设置全局事件监听
         if(null == ImManager.eventHandler) {
             ImManager.eventHandler = new DefaultEventHandler();
@@ -227,7 +220,7 @@ public class ImManager {
      */
     public static void stop() {
         try {
-           getSocketIOServer().stop();
+            getSocketIOServer().stop();
         } catch (Exception e) {
             e.printStackTrace();
         }

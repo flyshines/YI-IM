@@ -12,17 +12,17 @@ public class Online implements Serializable {
     public static final String OFFLINE="offline";
 
 
-    private String clientId;
+    private String userId;
     private String roomId;
     private String state;
     private UUID sessionId;
 
-    public String getClientId() {
-        return clientId;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setClientId(String clientId) {
-        this.clientId = clientId;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getState() {
