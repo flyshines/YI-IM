@@ -19,7 +19,6 @@ public class DefaultConnectListener implements ConnectListener {
 
     @Override
     public void onConnect(SocketIOClient client) {
-        String token = client.getHandshakeData().getSingleUrlParam("token");
-        logger.info("重新连接 sessionId:{} token:{}", client.getSessionId(), token);
+        logger.info("{} connected.", client.getSessionId());
     }
 }
